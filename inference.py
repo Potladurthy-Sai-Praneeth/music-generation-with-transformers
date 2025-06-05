@@ -299,7 +299,7 @@ class MusicGenerationInference:
         waveform_path = dirs['waveforms'] / f"{filename}_waveform.png"
         
         plt.savefig(waveform_path, dpi=300, bbox_inches='tight')
-        plt.show()
+        # plt.show()
         print(f"Waveform plot saved: {waveform_path}")
     
     def plot_spectrogram(self, waveform: torch.Tensor, filename: str, is_conditional: bool, sample_rate: Optional[int] = None):
@@ -333,7 +333,7 @@ class MusicGenerationInference:
         spectrogram_path = dirs['spectrograms'] / f"{filename}_spectrogram.png"
         
         plt.savefig(spectrogram_path, dpi=300, bbox_inches='tight')
-        plt.show()
+        # plt.show()
         print(f"Spectrogram plot saved: {spectrogram_path}")
     
     def generate_and_save(self, text_prompt: Optional[str] = None, 

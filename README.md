@@ -33,7 +33,7 @@ The project encompasses a complete pipeline for text-to-music generation, includ
 1. Clone the repository:
 ```bash
 git clone <repository-url>
-cd music_generation
+cd music-generation-with-transformers
 ```
 
 2. Install dependencies:

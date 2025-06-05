@@ -90,5 +90,6 @@ def get_default_prompts():
         "A cheerful piano melody",
         "Dark ambient electronic music with synthesizers",
         "Classical orchestra piece with strings and woodwinds",
-        "Electric guitar with high tempo and C Major"
+        "Electric guitar with high tempo and C Major",
+        "Experimental ambient techno with found sounds, granular synthesis, and evolving textures"
     ]

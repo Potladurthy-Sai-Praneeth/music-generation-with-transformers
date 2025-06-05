@@ -41,7 +41,7 @@ def parse_arguments():
     # Inference arguments
     parser.add_argument('--checkpoint', type=str, default=None,
                        help='Path to model checkpoint for inference')
-    parser.add_argument('--prompt', type=str, default=None,
+    parser.add_argument('--prompt', type=str, default='',
                        help='Text prompt for conditional generation')
     parser.add_argument('--batch_prompts', type=str, default=None,
                        help='Path to file containing multiple prompts')
@@ -224,22 +224,21 @@ def run_inference(config, args):
             except Exception as e:
                 print(f"Error generating for prompt '{prompt}': {e}")
     
-    # Generate unconditional samples
-    print(f"\nGenerating {args.num_unconditional} unconditional samples...")
-    for i in range(args.num_unconditional):
-        print(f"\nGenerating unconditional sample {i+1}/{args.num_unconditional}")
-        try:
-            inference_engine.generate_and_save(
-                text_prompt=None,
-                filename_prefix=f"{args.output_prefix}_unconditional_{i+1}",
-                cfg_weight=config['cfg_weight'],
-                max_length=config['max_audio_seq_len']
-            )
-        except Exception as e:
-            print(f"Error generating unconditional sample {i+1}: {e}")
+        # Generate unconditional samples
+        print(f"\nGenerating {args.num_unconditional} unconditional samples...")
+        for i in range(args.num_unconditional):
+            print(f"\nGenerating unconditional sample {i+1}/{args.num_unconditional}")
+            try:
+                inference_engine.generate_and_save(
+                    text_prompt=None,
+                    filename_prefix=f"{args.output_prefix}_unconditional_{i+1}",
+                    cfg_weight=config['cfg_weight'],
+                    max_length=config['max_audio_seq_len']
+                )
+            except Exception as e:
+                print(f"Error generating unconditional sample {i+1}: {e}")
     
     print("\nInference completed!")
-
 
 def main():
     """Main function."""
@@ -253,12 +252,6 @@ def main():
     
     # Create necessary directories
     create_directories(config)
-    
-    # Print configuration
-    print("Configuration:")
-    for key, value in config.items():
-        print(f"  {key}: {value}")
-    print()
     
     # Run appropriate mode
     if args.mode == 'train':
